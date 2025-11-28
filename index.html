@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marge Images Tool</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="app-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo">🧩</div>
+        <div class="brand-text">
+          <h1>Marge Images</h1>
+          <p>Merge, preview, and download — fast and easy.</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#tool" class="nav-link">Tool</a>
+        <a href="#how" class="nav-link">How it works</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Tool -->
+    <section id="tool" class="card">
+      <h2>Merge images</h2>
+      <p class="muted">Upload two images, choose a merge mode, preview instantly, then download.</p>
+
+      <div class="grid two-cols">
+        <div>
+          <label class="label">Image A</label>
+          <input type="file" id="img1" accept="image/*" />
+          <div class="preview" id="preview1"><span class="placeholder">Preview A</span></div>
+        </div>
+
+        <div>
+          <label class="label">Image B</label>
+          <input type="file" id="img2" accept="image/*" />
+          <div class="preview" id="preview2"><span class="placeholder">Preview B</span></div>
+        </div>
+      </div>
+
+      <div class="grid three-cols controls">
+        <div>
+          <label class="label">Merge mode</label>
+          <select id="mergeType">
+            <option value="overlay">Overlay (stack)</option>
+            <option value="side">Side by side</option>
+            <option value="top">Top & bottom</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="label">Opacity (overlay)</label>
+          <input type="range" id="opacity" min="0" max="1" step="0.05" value="0.5" />
+          <div class="range-value" id="opacityValue">50%</div>
+        </div>
+
+        <div>
+          <label class="label">Output format</label>
+          <select id="format">
+            <option value="png">PNG</option>
+            <option value="jpeg">JPEG</option>
+            <option value="webp">WebP</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn primary" id="mergeBtn">Merge</button>
+        <button class="btn" id="downloadBtn" disabled>Download</button>
+        <button class="btn ghost" id="resetBtn">Reset</button>
+      </div>
+
+      <div class="canvas-wrap">
+        <canvas id="canvas"></canvas>
+      </div>
+
+      <div class="note muted">Tip: Use similar dimensions for the best overlay results.</div>
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="card">
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li><strong>Upload:</strong> Select Image A and Image B.</li>
+        <li><strong>Choose mode:</strong> Overlay, Side by side, or Top & bottom.</li>
+        <li><strong>Adjust:</strong> Set opacity for overlay mode.</li>
+        <li><strong>Merge:</strong> Click Merge to render on canvas.</li>
+        <li><strong>Download:</strong> Save in PNG, JPEG, or WebP.</li>
+      </ol>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="card">
+      <h2>FAQ</h2>
+      <details>
+        <summary>Are images uploaded to a server?</summary>
+        <p>No. Everything runs in your browser using HTML5 Canvas.</p>
+      </details>
+      <details>
+        <summary>Why is Download disabled?</summary>
+        <p>It enables after a successful merge. Upload both images and click Merge.</p>
+      </details>
+      <details>
+        <summary>How do I get crisp results?</summary>
+        <p>Use high‑resolution images with similar dimensions. For overlay, align sizes for best blend.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <div class="container footer-inner">
+      <p>© 2025 Marge Images · Built with HTML, CSS & JavaScript</p>
+      <p class="muted">No data leaves your browser.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
